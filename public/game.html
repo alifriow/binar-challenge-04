@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TailwindCSS JIT</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body class="bg-coklat-muda">
@@ -28,77 +28,77 @@
             </div>
         </div>
     </header>
-    <main class="mt-10">
+    <main class="pt-10 md:max-w-4xl mx-auto min-h-full">
         <div class="px-9 py-5">
-            <div class="flex flex-col gap-y-10">
-                <!-- Players 1 -->
+            <div class="flex flex-col md:flex-row  md:flex-grow gap-y-10">
+                <!-- User -->
                 <div>
-                    <h3 class="text-xl lg:text-4xl text-black font-bold uppercase tracking-wider">Players 1</h3>
-                    <div class="mt-5 flex justify-between" id="players-input">
-                        <div class="w-24 flex items-center justify-center p-3 cursor-pointer rounded-[30px] hover:bg-abu-abu transition duration-100"
-                            value="player-batu">
+                    <h3 class="text-xl lg:text-4xl text-black font-bold uppercase tracking-wider md:text-center">User
+                    </h3>
+                    <div class="mt-5 flex justify-between md:flex-col md:gap-y-5 items-center" id="players-input">
+                        <div
+                            class="w-24 flex items-center justify-center p-3 cursor-pointer rounded-[30px] hover:bg-abu-abu transition duration-100">
                             <img src="../assets/batu.png" alt="" class="object-cover">
                         </div>
-                        <div class="w-24 flex items-center justify-center p-3 cursor-pointer rounded-[30px] hover:bg-abu-abu transition duration-100"
-                            value="player-kertas">
+                        <div
+                            class="w-24 flex items-center justify-center p-3 cursor-pointer rounded-[30px] hover:bg-abu-abu transition duration-100">
                             <img src="../assets/kertas.png" alt="" class="object-cover">
                         </div>
-                        <div class="w-24 flex items-center justify-center p-3 cursor-pointer rounded-[30px] hover:bg-abu-abu transition duration-100"
-                            value="player-gunting">
+                        <div
+                            class="w-24 flex items-center justify-center p-3 cursor-pointer rounded-[30px] hover:bg-abu-abu transition duration-100">
                             <img src="../assets/gunting.png" alt="" class="object-cover">
                         </div>
                     </div>
                 </div>
-                <!-- Players 1 -->
+                <!-- User -->
 
                 <!-- button & info -->
-                <div class="flex items-center justify-between px-3">
-                    <!-- <div class="w-full"></div> -->
-                    <div class="mx-auto" id="text-result">
+                <div class="flex items-center justify-center md:flex-col md:flex-grow px-3 md:mt-[120px]">
+                    <div class="w-6/12 md:hidden"></div>
+
+                    <div class="w-6/12 md:w-full h-full flex items-center md:justify-center" id="text-result">
                         <div class="vs">
-                            <h2 class="text-6xl text-red-700 font-bold">VS</h2>
+                            <h2 class="text-6xl text-red-700 font-bold md:text-8xl">VS</h2>
                         </div>
-                        <div class="p-3 bg-hijau-muda rounded-xl hidden menang">
-                            <h2 class="text-xl lg:text-4xl uppercase text-white font-bold bg-abu-abu">Players 1 Wins
+                        <div class="p-3 bg-hijau-muda rounded-xl hidden menang transform -rotate-12 animate-bounce">
+                            <h2 class="text-xl md:text-4xl uppercase text-white font-bold">User Wins
                             </h2>
                         </div>
-                        <div class="p-3 bg-hijau-muda rounded-xl hidden kalah">
-                            <h2 class="text-xl lg:text-4xl uppercase text-white font-bold">Players 1 Loose</h2>
+                        <div class="p-3 bg-hijau-muda rounded-xl hidden kalah transform -rotate-12 animate-bounce">
+                            <h2 class="text-xl md:text-4xl uppercase text-white font-bold">User Loose</h2>
                         </div>
-                        <div class="p-3 bg-hijau-muda rounded-xl hidden imbang">
-                            <h2 class="text-xl lg:text-4xl uppercase text-white font-bold">Draw</h2>
+                        <div class="p-3 bg-hijau-tua rounded-xl hidden imbang transform -rotate-12 animate-bounce">
+                            <h2 class="text-xl md:text-4xl uppercase text-white font-bold">Draw</h2>
                         </div>
                     </div>
-                    <div class="w-10 cursor-pointer refresh">
+                    <div class="w-10 md:w-16 cursor-pointer refresh">
                         <img src="../assets/refresh.png" alt="">
                     </div>
                 </div>
                 <!-- button & info -->
 
-                <!-- Players 2 -->
+                <!-- Computer -->
                 <div>
-                    <h3 class="text-xl lg:text-4xl text-black font-bold uppercase tracking-wider">Com</h3>
-                    <div class="mt-5 flex justify-between" id="com-result">
-                        <div
-                            class="w-24 flex items-center justify-center p-3 cursor-pointer rounded-[30px] transition duration-100">
+                    <h3 class="text-xl lg:text-4xl text-black font-bold uppercase tracking-wider md:text-center">Com
+                    </h3>
+                    <div class="mt-5 flex justify-between md:flex-col md:flex-grow md:gap-y-5" id="com-result">
+                        <div class="w-24 flex items-center justify-center p-3 rounded-[30px] transition duration-100">
                             <img src="../assets/batu.png" alt="" class="object-cover">
                         </div>
-                        <div
-                            class="w-24 flex items-center justify-center p-3 cursor-pointer rounded-[30px] transition duration-100">
+                        <div class="w-24 flex items-center justify-center p-3 rounded-[30px] transition duration-100">
                             <img src="../assets/kertas.png" alt="" class="object-cover">
                         </div>
-                        <div
-                            class="w-24 flex items-center justify-center p-3 cursor-pointer rounded-[30px] transition duration-100">
+                        <div class="w-24 flex items-center justify-center p-3 rounded-[30px] transition duration-100">
                             <img src="../assets/gunting.png" alt="" class="object-cover">
                         </div>
                     </div>
                 </div>
-                <!-- Players 2 -->
+                <!-- Computer -->
             </div>
         </div>
     </main>
 
-    <script src="./script.js"></script>
+    <script src="../js/script.js"></script>
 
 </body>
 

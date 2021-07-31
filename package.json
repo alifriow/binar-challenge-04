@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "set TAILWIND_MODE=watch&postcss tailwind.css -o ./public/style.css -w --verbose"
+    "dev": "npx tailwindcss -o css/style.css -w"
   },
   "keywords": [],
   "author": "",
