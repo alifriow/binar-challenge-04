@@ -6,10 +6,6 @@ let index = 0;
 let indexSkor = 0;
 let randomSementara = 0;
 
-// console.log("index", index);
-// console.log("random sementara", randomSementara);
-// console.log("random asli", randomNumber);
-
 function checkHasil(result) {
   for (let i = 0; i < textResult.length; i++) {
     if (textResult[i].classList.contains(result)) {
@@ -28,10 +24,6 @@ for (let i = 0; i < playersInput.length; i++) {
   playersInput[i].addEventListener("click", () => {
     index = i;
 
-    // console.log("index setelah pilih ", index);
-    // console.log("random sementara setelah pilih", randomSementara);
-    // console.log("random asli setelah pilih", randomNumber);
-
     pilihanCom[randomNumber].classList.add("bg-abu-abu");
     playersInput[i].classList.add("bg-abu-abu");
 
@@ -47,19 +39,16 @@ for (let i = 0; i < playersInput.length; i++) {
       // jika player batu
       if (i === 0) {
         result = randomNumber == 1 ? "kalah" : "menang";
-        console.log(result);
         checkHasil(result);
 
         // jika player kertas
       } else if (i === 1) {
         result = randomNumber == 2 ? "kalah" : "menang";
-        console.log(result);
         checkHasil(result);
 
         // jika player gunting
       } else if (i === 2) {
         result = randomNumber == 0 ? "kalah" : "menang";
-        console.log(result);
         checkHasil(result);
       }
     }
@@ -67,18 +56,7 @@ for (let i = 0; i < playersInput.length; i++) {
 }
 
 //com
-
 randomSementara = randomNumber;
-
-// let cetak;
-// if (randomNumber == 0) {
-//   cetak = "batu";
-// } else if (randomNumber == 1) {
-//   cetak = "kertas";
-// } else {
-//   cetak = "gunting";
-// }
-// console.log(cetak);
 
 //refresh
 const refresh = document.querySelector(".refresh");
@@ -90,20 +68,6 @@ refresh.addEventListener("click", () => {
   refreshImg.classList.add("duration-100");
   randomNumber = Math.floor(Math.random() * 3);
   randomSementara = randomNumber;
-
-  // console.log("index setelah refresh ", index);
-  // console.log("random sementara setelah refresh", randomSementara);
-  // console.log("random asli setelah refresh", randomNumber);
-
-  let cetak;
-  if (randomNumber == 0) {
-    cetak = "batu";
-  } else if (randomNumber == 1) {
-    cetak = "kertas";
-  } else {
-    cetak = "gunting";
-  }
-  console.log(cetak);
 
   if (refreshImg.classList.contains("rotate-180")) {
     refreshImg.classList.remove("rotate-180");
