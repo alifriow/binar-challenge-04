@@ -682,6 +682,11 @@ video {
   transform: var(--tw-transform);
 }
 
+.rotate-45 {
+  --tw-rotate: 45deg;
+  transform: var(--tw-transform);
+}
+
 .transform {
   transform: var(--tw-transform);
 }
