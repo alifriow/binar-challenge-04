@@ -76,7 +76,7 @@ players.forEach((player, i) => {
       computer[game.com].classList.add("bg-abu-abu");
       action = false;
     } else {
-      alert("jancok");
+      alert("Kamu sudah milih bro...");
     }
   });
 });
