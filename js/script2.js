@@ -56,6 +56,29 @@ players.forEach((player, i) => {
   });
 });
 
+// let action = true;
+
+// function klik(action) {
+//   let j = 0;
+//   if (action) {
+//     for (let i = 0; i < images.length; i++) {
+//       images[i].addEventListener("click", () => {
+//         action = false;
+//         if (j == 0) {
+//           alert(i);
+//           j = 1;
+//         } else {
+//           klik(action);
+//         }
+//       });
+//     }
+//   } else {
+//     alert("tidak boleh klik lebih dari satu");
+//   }
+// }
+
+// klik(action);
+
 //step 5
 function checkHasil(player, comp) {
   let result = "";
