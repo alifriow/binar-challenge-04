@@ -1,85 +1,156 @@
-//aturan
-let pilihanCom = document.querySelectorAll("#com-result div");
-let textResult = document.querySelectorAll("#text-result div");
+/*
+LOGIKA GAME 
+1. deklarasi var player ngambil dari dom queryselectorAll
+2. deklarasi var komputer ngambil dari Math.floor(Math.random() * 3)
+3. menentukan pilihan komputer gunting/batu/kertas (diambil dari mathRandom)
+4. menentukan pilihan player gunting/batu/kertas (diambil dari dom queryselectorAll)
+5. membandingkan pilhan komputer dan player dengan diberi kondisi if else
+6. menampilkan hasil dari pilihan player vs komputer
+7. reset
+  7.1. mathrandom di panggil kembali (pilihan komputer) 
+  7.2. menghapus background (pilihan komputer) 
+  7.3. menghapus background (pilihan player)
+  7.4. mengembalikan tampilan hasil ke VS (tampilan awal)
+  7.5. gambar image rotate
+*/
+
+//tampungan hasil, index untuk player ketika di click, index textResult
+let hasil;
+let indexPlayer;
+let indexTextResult;
+
+//step 1
+let players = document.querySelectorAll("#players div");
+
+//step 2
+let computer = document.querySelectorAll("#computer div");
+
+// step 3
 let randomNumber = Math.floor(Math.random() * 3);
-let index = 0;
-let indexSkor = 0;
-let randomSementara = 0;
 
-function checkHasil(result) {
-  for (let i = 0; i < textResult.length; i++) {
-    if (textResult[i].classList.contains(result)) {
-      // console.log(textResult[i]);
-      indexSkor = i;
-      textResult[0].classList.add("hidden");
-      textResult[i].classList.remove("hidden");
-    }
-  }
-}
+// step 4
+players.forEach((player, i) => {
+  player.addEventListener("click", () => {
+    // console.log(player.getAttribute("class"));
+    indexPlayer = i;
+    player.classList.add("bg-abu-abu");
+    computer[randomNumber].classList.add("bg-abu-abu");
 
-//player
-const playersInput = document.querySelectorAll("#players-input div");
-
-for (let i = 0; i < playersInput.length; i++) {
-  playersInput[i].addEventListener("click", () => {
-    index = i;
-
-    pilihanCom[randomNumber].classList.add("bg-abu-abu");
-    playersInput[i].classList.add("bg-abu-abu");
-
-    let result = "";
-    //jika imbang
-    if (i == randomNumber) {
-      result = "imbang";
-      console.log(result);
-      checkHasil(result);
-
-      //   jika tidak imbang
+    let pilihan = "";
+    //batu
+    if (i === 0) {
+      pilihan = "batu";
+      checkHasil(i, randomNumber);
+    } else if (i === 1) {
+      pilihan = "kertas";
+      checkHasil(i, randomNumber);
     } else {
-      // jika player batu
-      if (i === 0) {
-        result = randomNumber == 1 ? "kalah" : "menang";
-        checkHasil(result);
+      pilihan = "gunting";
+      checkHasil(i, randomNumber);
+    }
 
-        // jika player kertas
-      } else if (i === 1) {
-        result = randomNumber == 2 ? "kalah" : "menang";
-        checkHasil(result);
+    tampilPesan(hasil);
 
-        // jika player gunting
-      } else if (i === 2) {
-        result = randomNumber == 0 ? "kalah" : "menang";
-        checkHasil(result);
-      }
+    console.log("player", pilihan);
+    console.log("computer", randomNumber);
+  });
+});
+
+// let action = true;
+
+// function klik(action) {
+//   let j = 0;
+//   if (action) {
+//     for (let i = 0; i < images.length; i++) {
+//       images[i].addEventListener("click", () => {
+//         action = false;
+//         if (j == 0) {
+//           alert(i);
+//           j = 1;
+//         } else {
+//           klik(action);
+//         }
+//       });
+//     }
+//   } else {
+//     alert("tidak boleh klik lebih dari satu");
+//   }
+// }
+
+// klik(action);
+
+//step 5
+function checkHasil(player, comp) {
+  let result = "";
+
+  //imbang
+  if (player === comp) {
+    result = "imbang";
+  }
+
+  //jika tidak imbang
+  else {
+    //jika pilihan batu
+    if (player === 0) {
+      result = comp === 1 ? "kalah" : "menang";
+    }
+
+    //jika pilihan kertas
+    else if (player === 1) {
+      result = comp === 2 ? "kalah" : "menang";
+    }
+
+    //jika pilihan gunting
+    else if (player === 2) {
+      result = comp === 0 ? "kalah" : "menang";
+    }
+  }
+
+  //   alert(hasil);
+  hasil = result;
+  console.log("hasil", hasil);
+}
+
+//step 6
+let textResult = document.querySelectorAll("#text-result div");
+function tampilPesan(hasil) {
+  textResult.forEach((result, i) => {
+    if (result.classList.contains(hasil)) {
+      indexTextResult = i;
+      textResult[0].classList.add("hidden");
+      result.classList.remove("hidden");
     }
   });
 }
 
-//com
-randomSementara = randomNumber;
+//step 7
+const btnReset = document.querySelector(".refresh");
+const imgReset = btnReset.querySelector("img");
 
-//refresh
-const refresh = document.querySelector(".refresh");
-const refreshImg = document.querySelector(".refresh img");
-
-refresh.addEventListener("click", () => {
-  refreshImg.classList.add("transform");
-  refreshImg.classList.add("transition");
-  refreshImg.classList.add("duration-100");
+btnReset.addEventListener("click", () => {
+  // 7.1
   randomNumber = Math.floor(Math.random() * 3);
-  randomSementara = randomNumber;
 
-  if (refreshImg.classList.contains("rotate-180")) {
-    refreshImg.classList.remove("rotate-180");
-  } else {
-    refreshImg.classList.add("rotate-180");
-  }
-
-  pilihanCom.forEach((item) => {
-    item.classList.remove("bg-abu-abu");
+  // 7.2
+  computer.forEach((comp) => {
+    comp.classList.remove("bg-abu-abu");
   });
 
-  playersInput[index].classList.remove("bg-abu-abu");
-  textResult[indexSkor].classList.add("hidden");
+  // 7.3
+  players[indexPlayer].classList.remove("bg-abu-abu");
+
+  // 7.4
   textResult[0].classList.remove("hidden");
+  textResult[indexTextResult].classList.add("hidden");
+
+  // 7.5
+  imgReset.classList.add("transform");
+  imgReset.classList.add("transition");
+  imgReset.classList.add("duration-100");
+
+  if (imgReset.classList.contains("rotate-180")) {
+    imgReset.classList.remove("rotate-180");
+  } else {
+    imgReset.classList.add("rotate-180");
+  }
 });
