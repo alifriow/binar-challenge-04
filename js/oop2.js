@@ -4,7 +4,7 @@ let vs = document.getElementById("textVS");
 let divHasil = document.getElementById("divHasil");
 let textHasil = document.getElementById("textHasil");
 let btnReset = document.getElementById("refresh");
-let imgReset = btnReset.querySelector("img");
+let imgReset = document.getElementById("img-restart");
 
 class Game {
   constructor(isStart, valueUser, valueComp) {
@@ -15,7 +15,6 @@ class Game {
   }
 
   gameStart() {
-    this.isStart = true;
     this.pilihanUser();
   }
 
@@ -26,15 +25,20 @@ class Game {
   pilihanUser() {
     pilihanPlayer.forEach((player, index) => {
       player.addEventListener("click", () => {
-        this.valueUser = index;
-        this.valueComp = this.randomValue();
+        if (!this.isStart) {
+          this.valueUser = index;
+          this.valueComp = this.randomValue();
 
-        this.stylingUserComp();
+          this.stylingUserComp();
 
-        this.checkHasil(this.valueUser, this.valueComp);
+          this.checkHasil(this.valueUser, this.valueComp);
 
-        this.stylingResult();
-        this.reset();
+          this.stylingResult();
+          this.reset();
+          this.isStart = true;
+        } else {
+          alert("tidak boleh klik");
+        }
       });
     });
   }
@@ -87,6 +91,7 @@ class Game {
       pilihanPlayer[this.valueUser].classList.remove("bg-abu-abu");
       pilihanComp[this.valueComp].classList.remove("bg-abu-abu");
       this.valueComp = this.randomValue();
+      this.isStart = false;
 
       imgReset.classList.add("transform");
       imgReset.classList.add("transition");
