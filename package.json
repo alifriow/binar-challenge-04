@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -o css/style.css -w"
+    "build:css": "tailwind -o css/style.css -w",
+    "live-server": "live-server",
+    "dev": "concurrently \"npm run build:css\" \"npm run live-server\""
   },
   "keywords": [],
   "author": "",
@@ -13,5 +15,9 @@
     "autoprefixer": "^10.3.1",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.2.4"
+  },
+  "dependencies": {
+    "concurrently": "^6.2.0",
+    "live-server": "^1.2.1"
   }
 }
