@@ -4,6 +4,7 @@ let vs = document.getElementById("textVS");
 let divHasil = document.getElementById("divHasil");
 let textHasil = document.getElementById("textHasil");
 let btnReset = document.getElementById("refresh");
+let imgReset = btnReset.querySelector("img");
 
 class Game {
   constructor(isStart, valueUser, valueComp) {
@@ -86,6 +87,16 @@ class Game {
       pilihanPlayer[this.valueUser].classList.remove("bg-abu-abu");
       pilihanComp[this.valueComp].classList.remove("bg-abu-abu");
       this.valueComp = this.randomValue();
+
+      imgReset.classList.add("transform");
+      imgReset.classList.add("transition");
+      imgReset.classList.add("duration-100");
+
+      if (imgReset.classList.contains("rotate-180")) {
+        imgReset.classList.remove("rotate-180");
+      } else {
+        imgReset.classList.add("rotate-180");
+      }
     });
   }
 }
